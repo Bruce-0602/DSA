@@ -34,26 +34,26 @@ Big O
 
 	Notes
 
-	Basic DS BigO: https://www.bigocheatsheet.com/
-	
-	Goood code:
-		1. Readable
-		2. Scalable
-		     Time (Speed) 
-		     Space (Memory) 
+		Basic DS BigO: https://www.bigocheatsheet.com/
+		
+		Goood code:
+			1. Readable
+			2. Scalable
+			     Time (Speed) 
+			     Space (Memory) 
 
-	Heap - Store variables that we assigned values to 
-	Stack - Keep track of function calls
+		Heap - Store variables that we assigned values to 
+		Stack - Keep track of function calls
 
-	Space Complexity: (is about the EXTRA space create, not considering the input)
-	def fun(list):
-		for i in range(len(list): 
-		print(i)
-	this is O(1) in space
-	
-	def fun(list):
-		newList = list() 
-		for i in range(len(list): 
-			newList[i] = "OK"
-		return new List
-	this is O(n)
+		Space Complexity: (is about the EXTRA space create, not considering the input)
+			def fun(list):
+				for i in range(len(list): 
+				print(i)
+			# this is O(1) in space
+		
+			def fun(list):
+				newList = list() 
+				for i in range(len(list): 
+					newList[i] = "OK"
+				return new List
+			# this is O(n)
