@@ -1,0 +1,295 @@
+How Computer Stores Data
+	CPU have access to:
+		RAM (random access memory)- faster, lose after shut down
+		Storage (Hard Disk) - slower, persistent storage 
+
+	CPU has small memory - Cache (common one: LRU Cache)
+	
+	8 bits = 1 byte
+
+Intro:
+	Array limitation:
+		fixed # values, not extendible, Element search (traversal) is expensive (linear O(n))
+	
+	Set implementation internally uses map implementations
+
+	Collection and Map in Java mostly:
+		Serializable
+		implements clone()
+		allow nulls
+		NOT syncronized
+
+	Recommend to use -> (legacy):
+		ArrayList -> Vector
+		HashMap -> Hashtable
+		ArrayDeque -> Stack
+		Legacy implementations are syncronized which slow things down
+
+Collection Interface:
+	Basic Operations:
+		boolean add(E element);            // optional
+		boolean remove(Object element);    // optional
+		boolean contains(Object element);
+		int size();
+		boolean isEmpty();
+		Iterator<E> iterator();
+
+	Bulk Operations:
+		boolean addAll(Collection<? extends E> c);            // optional
+		boolean removeAll(Collection<?> c);                   // optional
+		boolean retainAll(Collection<?> c);                   // optional
+		boolean containsAll(Collection<?> c);
+		void clear();                                         // optional     
+
+List Interface: (244)
+	useful when swquence/ positioning matters
+	Models resizable linear array with indexed access  
+	can contain duplicates
+
+Iterable Interface:
+	default:
+		forEach 
+		Spliterator
+			- partition large volume of data into parallel sections for efficiency
+
+	Allows element removal during iteration
+
+ListIterator:
+	bidirectional access
+	traversing trees
+	installing software (next & back)
+
+	Cursor position 248, 3:30
+		no current index
+
+ArrayList:
+	Typical Uses:
+		simple iteration
+		fast random access O(1)
+		appending elements or deleting last element O(1)
+
+	a resizeable array implementation of a List Interface
+		- default capacity = 10, increases by 50% (when capacity is reached)
+			copying old array content into new array
+		- When dealing with large array, ArrayList(int initialCapacity); or ensureCapacity(int);
+		- allow null and duplicates
+
+	Methods:
+		add(index, element) - O(n)
+			Following elements shifted right by one pos
+
+		remove(index, element) - O(n)
+			Following elements shifted left by one pos
+
+		contains() & indexOf() - O(n)
+			indexOf() returns -1 if not in ListArray
+			use equals() to compare input element to elements in the list
+
+		removeAll(collection) - can be worse than O(n^2)
+			collection.contains()on every element
+				contains -> remove it
+			O(n) traversing current list
+				O(n) contains() call (if collection is list)
+				O(n) elements shift on (remove)
+
+			retainAll() has same performance issue
+
+		O(1) Methods
+			size(), isEmpty(), set(), get(), iterator() & listIterator()
+	Note: 
+		Frequent Search ~ consider Set implementation
+		removeAll ~ faster in linkedHashMap
+
+LinkedList:
+	Typical uses:
+		frequent add/remove during iteration
+			better for removeAll() and retainAll()
+
+	O(n) methods: (n/2 for the first three)
+		get(i), add(i,e), remove(i), indexOf(Object), lastIndexxOf(Object)
+
+	LIFO & FIFO operations in O(1)
+		but for Deque, recommend use ArrayDeque for higher efficiency
+
+	based on doubly linked list - act also as a Deque
+		- frequently manipulate the first and the last element
+		- traverse half of the Linked list (after knowing the index, can choose traverse direction)
+
+	Singly linkedList:
+		class Node {
+			int data;
+			Node next;
+		}
+
+		class SinglyLinkedList {
+
+			Node head = new Node();
+
+			// adding at the beginning
+			void add(int data) {
+				Node newNode = new Node(data);
+				newNode.next = head.next;
+				head.next = newNode;
+			}
+		}
+
+	Doubly Linked List add:
+		1. create new node
+		2. set outgoinf links:
+			newNode.next = head
+			newNode.prev = head.prev
+		3. set incoming links:
+			newNode.next.prev = newNode
+			newNode.prev.next = newNode
+
+Queue:
+	Typical uses:
+		useful when manipulating head& tail
+		tail - add; head - remove/ retrieve
+	Models FIFO
+	can have null, but generally not supported -> don't insert nulls
+
+	NO indexed access
+
+	Methods:
+		Insert:
+			add(e):
+				when inserting to the end of a fixed capacity queue, throw error (IllegalStateException)
+			offer(e):
+				when inserting to the end of a fixed capacity queue, return false
+				recommend to use for capacity limited queue
+		Remove:
+			remove():
+				throw error if queue is empty
+			poll():
+				return null if queue is empty
+		Inspect:
+			element():
+				throw error if queue is empty
+			peek():
+				return null if queue is empty
+
+Deque Interface:
+	Double ended queue
+	Models FIFO & LIFO
+	Deque implementation:
+		ArrayDeque - most used
+		LinkedList
+		ConcurrentLinkedDeque
+		LinkedBlockingDeque
+
+	
+	addLast(e)/offerLast(e)         addFirst(e)/offerFirst(e)
+	removeLast/pollLast             removeFirst/pollFirst
+	getLast/peekLast                getFirst/peekFirst
+	behaves similar to Queue
+
+	Stack operation:
+		push(e) = addFirst(e)
+		pop = removeFirst
+		peek
+
+	removeFirstOccurence(Object) & removeLastOccurence(Object)
+
+	Blocking Queues - helpful for inter-thread communication (concurrency)
+		BlockingQueue
+		BlockingDeque
+
+ArrayDeque
+	a resizable array implementation of a Deque interface
+
+	nulls are PROHIBITED
+
+	prefer ArrayDeque over LinkedList:
+		Java doc - faster than LinkedList as a queue
+		3 * better than LinkedList for LargeQueues
+			LinkedList has node allocations overhead & GC cost
+
+	prefer ArrayList over ArrayList as a FIFO:
+		Performance
+			remove(0) - shifts elements O(n)
+			ArrayDeque - circular array, no element shifts O(1)
+		Intention
+			Deque only perform on head/ tail
+			ArrayList not limit to head & tail
+
+	mostly in O(n):
+		remove(Object)
+		removeFirstOccurence
+		removeLastOccurence
+		contains
+
+Hash Table:
+	Typical use - fast look up
+
+	Applications:
+		database indexing
+		Nosql databases
+		switch statement
+
+	Implements an associative array <key:value>
+		an array referencing a linkedList which stores the key value pair
+		each slot in the array is called bucket
+		hash function is performed on the key
+			bucket# = f(key, array-size)
+				e.g., key % array-size
+				% is a simple has function, which transforms large space to smaller one
+				15 = 315 % 25 -> 15 will be the target bucket number for the mapping with the key 350
+	2-Step Hashing in Java
+		hash = hash(key.hashCode())
+		bucket# = hash & (length-1) // bitwise operator & is used to offset into hashtable
+
+		hash function properties
+			quickly locate bucket
+			uniformly disperse elements (avoid hash collision)
+	O(1) operations:
+		Insert <key, value>
+		search by key
+		remove by key
+
+	NO duplicate keys
+
+Set:
+	useful when uniqueness & fast lookup is required
+	SortedSet provides sorting
+
+Hashset:
+	hash table implementation of Set interface
+	uses HashMap
+	key = element, value = newObject()
+
+	TYpical uses:
+		rapid loopup, insertion and deletion O(1)
+		insertion order is not important
+		better for removeAll() & retainAll() - O(n)
+
+	for objects with same fields will be treated as different objects in HashSet:
+		first the instance reference is compared, need to override hashCode();
+		then == operator is compared, need to override equals();
+		simple way: Source -> generate hasCode() and equals()
+		detail in 253 ~9:00
+
+	Note:
+		always override hashCodewhen overriding equals
+		(especially when you want to treat 2 instances logically equal)
+		only equals is override, likely the object is stored in a different bucket
+
+LinkedHashSet:
+	Typical uses:
+		rapid loopup, insertion and deletion O(1)
+		insertion order IS important
+		better for removeAll() & retainAll() - O(n)
+
+TreeSet:
+	red-black tree-based implementation of NavigableSet interface
+	internally uses TreeMap
+	stores key as elements, value = instance of Object class (new Object())
+	elements are unique & sorted
+	fast lookup & O(log(n)) for add/remove/contains
+
+Sorting approach:
+	1. Natural ordering - java.lang.Comparable
+		
+	2. java.util.Comparator
+		major advantage: can create and use different comparator to be used for the same class
+		(strategy pattern)
