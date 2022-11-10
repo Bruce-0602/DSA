@@ -293,3 +293,73 @@ Sorting approach:
 	2. java.util.Comparator
 		major advantage: can create and use different comparator to be used for the same class
 		(strategy pattern)
+
+Map：
+	use immutable objects like String as Key
+
+HashMap:
+	O(1) for put, get and remove
+
+LikedHashMap:
+	reserve insert order
+	LRU (Least Rencently Used) Cache: (261 4:30)
+		provides quick access to important data
+			the most recently used/ frequently used/ liked/ shared depends on application
+
+Note:
+	Return emptyarrays or collections, not nulls
+	Idiom for returning Array from Collection:
+		private static final String[] EMPTY_ARRAY = new String[0];
+
+		public String[] getBookTitlesByAuthor(String author){
+			List<String> titles = dao.getBookTitlesByAuthor(author);
+			return titles.toArray(EMPTY_ARRAY)
+		}
+	Idiom for returning same empty immutable Collection: 266 4:27
+
+Summary:
+	List:
+		sequence/ positioning
+
+		ArrayList:
+			fast random access O(1)
+			appending elements or deleting last element O(1)
+
+		LinkedList:
+			frequent add/remove operation during iteration
+
+	Queue:
+		fast head/tail manipulations
+
+		ArrayDeque:
+			LIFO & FIFO operations  O(1)
+			3* beter than LinkedList for large queues (LinkedList more memory allocation and collection for node)
+
+	Set:
+		iniqueness & veryfast lookups
+
+		Hashset:
+			lookup, insertion, deletion O(1)
+			Always override hashCode() when override equals()
+
+		LinkedHashSet:
+			insertion order preserved + still very fast O(1)
+
+		TreeSet
+			sorting + pretty fast O(log(n))
+
+	Map:
+		HashSet uses HashMap
+		HashSet        ————>      HashMap
+		   ^                        ^
+		LinkedHashSet  ————>      LinkedHashMap (LRU Cache)
+
+		TreeSet        ————>      TreeMap
+
+	Arrays:
+		asList(immutable), sort...
+		convert an array to a set:
+			new HashSet(Arrays.asList(array));
+
+	Collections:
+		addAll, sort...
