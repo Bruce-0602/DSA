@@ -1,0 +1,7 @@
+Array：
+	lookup O(1)
+	push O(1)/O(n) - depends on whether trigger auto-resizing of the array
+	insert O(n)
+	delete O(n)
+
+	treat String questions as Array questions
