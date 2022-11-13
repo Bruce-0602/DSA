@@ -1,0 +1,31 @@
+Hash Table:
+	Java - Map; JS - Object; Python - dictionary
+
+	Hash function:
+		1. one-way
+		2. constant output for same input 
+		fast more important than complexity (secutiry)
+
+	insert O(1)
+	lookup O(1)
+	delete O(1)
+	search O(1)
+
+	Hash Collision
+		slows down reading and writing by O(n/k) -> O(n) (k is the size of hash table)
+		deal with:
+			1. linked list separate chaining
+			other - https://en.wikipedia.org/wiki/Hash_table#Collision_resolution
+
+	JS specific:
+		object:
+			keys are only string
+
+		new Map():
+			key can be anything
+			retains insertion order
+
+		new Sets():
+			only key, no value
+
+		_method(): convention for private method
