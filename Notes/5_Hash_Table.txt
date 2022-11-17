@@ -17,6 +17,15 @@ Hash Table:
 			1. linked list separate chaining
 			other - https://en.wikipedia.org/wiki/Hash_table#Collision_resolution
 
+	Pros:
+		Fast lookups
+		Fast inserts
+		Flexible Keys
+
+	Cons:
+		Unordered
+		Slow key iteration
+
 	JS specific:
 		object:
 			keys are only string

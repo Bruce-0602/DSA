@@ -1,0 +1,39 @@
+Singly Linked List:
+	prepend O(1)
+	append O(1)
+	lookup O(n)
+	insert O(n)
+	delete O(n)
+
+	insert & delete generally better than array because not shifting is required
+
+Doubly Linked List:
+	prepend O(1)
+	append O(1)
+	lookup O(n) [can be O(n/2)]
+	insert O(n) [can be O(n/2)]
+	delete O(n) [can be O(n/2)]
+	(same as singly linked list)
+
+	enables backwards traverse. 
+
+Singly vs Doubly:
+	Singly:
+		less memory
+		cannot traverse backward
+		suitable for tighter memory constrains, insertion & deletion more important
+
+	Doubly:
+		can traverse backward
+		more memory
+		extra operation
+		suitable for loser memory constrains, searching more important
+
+Pros:
+	Fast Insertion & Deletion
+	Ordered
+	Flexible Size
+
+Cons:
+	Slow lookup
+	More memory
