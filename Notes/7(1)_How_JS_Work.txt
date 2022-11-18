@@ -1,0 +1,23 @@
+(117)
+JS Runtime Ennvironment:
+	JS Enginer, Memory Heap, Call Stack
+	Web APIs (DOM - document, AJAX - XMLHttpRequest, Timeout - setTimeout)
+	Callback Queue (onClick, onLoad, onDone)
+	Event Loop
+
+Why name async function callback function?
+	It's like waiting for the callback from the server/client (after you ring them)
+
+Memory Heap
+	memory allocation
+	memory Leak:
+		unused memory not cleaned up (why global variables are bad)
+
+Call stack
+	one per thread - JS is single threaded (one statement executed at a time) 
+
+Why JS is single threaded?
+	avoid issues like dead-locks in multi-thread environment
+
+How JS achieve non-blocking?
+	Asynchronous, with callback functions through Callback queue then the event loop

@@ -1,0 +1,32 @@
+Stack: LIFO
+	lookup O(n) - usually not traverse through stacks
+	pop O(1)
+	push O(1)
+	peek O(1) (top)
+
+	browser history/ undo text writing
+
+Queues: FIFO
+	lookup O(n) - usually not traverse through queue
+	enqueue O(1)
+	dequeue O(1)
+	peek O(1)
+
+	waitlist of uber & restauraunt/ printers job
+
+Why use array for stack?
+	Efficient, romoving last item will not result in any shifts
+	Cache locality, faster in accessing items
+	less memory
+
+Why use Linked List for stack?
+	more dynamic in size
+
+Why not use array to build a queue?
+	Inefficient, removing first item will result in n-1 shifts of index.
+
+Why use Linked List for queue?
+	Efficient, no shift needed
+
+
+	
