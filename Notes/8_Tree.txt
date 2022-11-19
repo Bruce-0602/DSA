@@ -1,0 +1,61 @@
+Tree
+	DOM is a tree structure
+	computer chess game use tree
+	abstract syntax tree
+	Linked List is a single path tree
+
+Binary Tree
+	each node has 0/1/2 childs
+	each node has only one parent
+	
+	perfect & full binary tree (127 3:21)
+	perfect binary tree:
+		No. level n Node = 2 * No. level (n - 1) Node
+		No. level n Node = sum of all previous levels No. + 1
+		No. Node = 2^h - 1;
+
+	Binary Search Tree: (ordered , no-duplicate BT)
+		Lookup O(log(N))
+		Insert O(log(N))
+		Delete O(log(N))
+
+		Pros:
+			Better than O(n)
+			Ordered
+			Flecible Size
+
+		Cons:
+			No O(1) Operations
+
+		left child < parent < right child
+
+		why is it prefered over hash table?
+			Binary search tree preserve relationship
+
+		unbalanced BST:
+			operations become O(n) - it becomes a SLL in the worst case
+
+			There're ways to balance a unbalanced tree (AVL & Red Black Tree)
+			https://www.geeksforgeeks.org/red-black-tree-vs-avl-tree/amp/
+
+	Binary Heap:
+		Maximum heap - parent node > child nodes
+		Minimum heap - parent node < child nodes
+		left to right insertion
+		commonly used in priority queue, data storage, sorting algorithms
+		efficient at "getting K biggest elements" (=> O(K*log(N))
+
+		Lookup O(N) - less ordered compared to BST
+		Insert O(log(N))
+		Delete O(log(N))
+
+		pros:
+			Priority
+
+	Trie:
+		specializedin searching
+		find out if a word is in a text
+		providing auto completion suggestion
+		IP routing
+
+		O(length of the word)
