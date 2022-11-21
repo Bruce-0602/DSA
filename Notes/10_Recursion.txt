@@ -1,0 +1,31 @@
+Recursion:
+	the most obvious problem:
+		stack overflow - the call stack's memory is limited; sole - well-defined base case.
+
+	Generally:
+		1. Identify the base case
+		2. Identify the recursivecase
+		3. Get closer and closerto base case and return 
+		(usually have 2 returns)
+
+	trade-off Recursion VS Iterative:
+		Anything recursive can be done iteratively
+
+		Recursion:
+			Pros: more readable, more DRY (do not repeat yourself)
+			Cons: large Stack
+
+			prefered for DS you don't know how deep they are
+
+			Tail Call Optimization
+
+	When to use recursion:
+		traversing in trees and graphs, using a tree or converting sth into a tree
+		Merge Sort, Quick Sort
+
+		1. Divided into a number of subproblems that are smaller instances of the same problem.
+		2. each instance of the subproblem is identical in nature
+		3. the solutions of each subproblem can be combined to solve the problem at hand
+
+		Divide and Conquew using recursion
+

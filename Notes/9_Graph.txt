@@ -1,0 +1,41 @@
+Graph:
+	Node(Vertex) & Edge
+	ideal for things that are connected (roads, friendship)
+	LL (tyoeof) Tree (typeof) Graph
+
+	Directed/ Undirected
+	Weighted/ Unweighted
+	Cyclic/ Acyclic
+
+	DAG - Directed Acyclic Graph (BlockChain project Iyoda?)
+
+	Presentaion:
+		  2 - 0
+		 / \
+		1 - 3
+
+		1. Edge List:
+			const graph = [[0,2], [2,3], [2,1], [1,3]];
+
+		2. Adjacent List: 
+			// The index of the array is the value of the actual Graph node;
+			// can use object
+			const graph = [[2], [2,3], [0,1,3], [1,2]];
+
+		3. Adjacent Matric:
+			// can use object
+			// more suitable for weighted graph?
+			// takes up more space
+			const graph = [
+				[0,0,1,0],
+				[0,0,1,1],
+				[1,1,0,1],
+				[0,1,1,0]
+			];
+
+	Pros:
+		Relationships
+	Cons:
+		Scaling is hard
+
+	neo4j (graph tools)
