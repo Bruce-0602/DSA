@@ -19,13 +19,13 @@ Sorting
 	Common sorts:
 		slower                 Time       | Space
 			Bubble sort        O(n)       | O(1)                                                                                                           两两互换
-			Insertion Sort     O(n)       | O(1)       Note: good for almost sorted (O(n)) and small dataset                                               倒着一个个换
 			Selection Sort     O(n)       | O(1)                                                                                                           假设每一个是最小的，在后面找更小的，有的话互换
+			Insertion Sort     O(n)       | O(1)       Note: good for almost sorted (O(n)) and small dataset                                               倒着一个个换
 
 		faster: (Divide & Conquer)
 			Merge Sort         O(nlog(n)) | O(n)                                                                                                           recursion, merge()想象两个stack, shift()/ 记index
 
-			Quick Sort         O(n^2)     | O(log(n))  Note: Average Time O(nlog(n)); worst case when pivot is the smallest or largest item in the list    pivot,
+			Quick Sort         O(n^2)     | O(log(n))  Note: Average Time O(nlog(n)); worst case when pivot is the smallest or largest item in the list    pivot, partition
 			https://www.youtube.com/watch?v=MZaf_9IZCrc
 
 	What is stability in sorting algorithms and why is it important?
