@@ -1,0 +1,87 @@
+Sorting
+	Why company favors sorting this much?
+		when inputs gets larger and larger, time & space cost more 
+		big companies sort their product/ data in certain way: e.g.
+			apps for Apple, items for Amazon, logs for Windows, shows for Netflix
+
+	the issue with sort() in js:
+		covert numbers to string then compare (comparing charCode (unicode)
+
+		to sort numbers in js: (use compare function)
+		https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+			numberArray.sort(compareNumbers(a, b) {
+				  return a - b;
+				});
+
+	visual trade-off of sorting algos:
+		https://www.toptal.com/developers/sorting-algorithms
+
+	Common sorts:
+		slower                 Time       | Space
+			Bubble sort        O(n)       | O(1)                                                                                                           两两互换
+			Insertion Sort     O(n)       | O(1)       Note: good for almost sorted (O(n)) and small dataset                                               倒着一个个换
+			Selection Sort     O(n)       | O(1)                                                                                                           假设每一个是最小的，在后面找更小的，有的话互换
+
+		faster: (Divide & Conquer)
+			Merge Sort         O(nlog(n)) | O(n)                                                                                                           recursion, merge()想象两个stack, shift()/ 记index
+
+			Quick Sort         O(n^2)     | O(log(n))  Note: Average Time O(nlog(n)); worst case when pivot is the smallest or largest item in the list    pivot,
+			https://www.youtube.com/watch?v=MZaf_9IZCrc
+
+	What is stability in sorting algorithms and why is it important?
+		https://stackoverflow.com/questions/1517793/what-is-stability-in-sorting-algorithms-and-why-is-it-important
+
+	Quick sort is usually the fastest on average (though depends on pivot picking)
+
+	Selection of sorting:
+		insertion - only a few items/ nearly sorted
+		bubble & selection - rarely use, not very efficient
+
+		merge - worried about worst case (memory is not a problem)
+		quick - generally very fast
+			Quick sort is not reliable when the input is mostly sorted. In such a situation the pivot we select will most likely not end up in center of the array because it is already in its right place in the array (remember the input is already mostly sorted) hence not dividing the array in halves at each iteration hence not forming a perfect binary tree hence not giving us the desired O(log(n)).
+
+			Instead what we will get is O(n^2), which is the worst case of Quick Sort.
+
+			So if you have a large input size, O(n^2) means the sorting will take a really long time. I tested this in Java language with input size of 100000 elements. I have a decent gaming laptop with pretty great specs. Even after 6mins the sorting did not finish. In real life, input is usually much bigger than my test case.
+
+			Hence, people rely on merge sort. Even if merge sort takes additional space at least it is 100% reliable in the sense that we will get O(n*log(n)) for all situations.
+		heapsort - generally slower than quick, space better
+			https://brilliant.org/wiki/heap-sort/
+		quick vs heap: https://stackoverflow.com/questions/2467751/quicksort-vs-heapsort
+
+	Non-comparison sorts: (186)
+		beat O(nlog(n))
+		Counting sort & Radix Sort
+		Only work for numbers (integers in a specific range)
+
+	Interview Questions:
+		#1 - Sort 10 schools around your house by distance:
+			insertion - small input, easy to implement
+
+		#2 - eBay sorts listings by the current Bid amount:
+			radix/ counting sort if bid amount format allows, to beat O(nlog(n))
+			otherwise merge sort (instead of risking worst case for quick sort)
+
+		#3 - Sport scores on ESPN
+			quick sort, considering memory usage, not use merge
+
+		#4 - Massive database (can't fit all into memory) needs to sort through past year's user data
+			external sort - merge
+
+		#5 - Almost sorted Udemy review data needs to update and add 2 new reviews
+			insertion
+			Insertion sort - assuming most of the previous data is sorted
+
+		#6 - Temperature Records for the past 50 years in Canada
+			radix/ counting sort if bid amount format allows, to beat O(nlog(n))
+			otherwise quick sort to use in-memory sort
+
+		#7 - Large user name database needs to be sorted. Data is very random.
+			merge if memory is ok; quick if memory is tight
+
+		#8 - You want to teach sorting for the first time
+			bubble/ insertion
+
+	Sorting in js:
+		different browsers uses different algos, mozella firefox uses merge sort, Google use quick sort (insertion sort for small array) 
