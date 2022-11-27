@@ -166,6 +166,18 @@ tree.insert(1);
 console.log(tree.lookup(17))
 // JSON.stringify(traverse(tree.root))
 
+
+// BFS:
+// tree.breadthFirstSearch();
+// const ans = tree.breadthFirstSearchR([tree.root], []);
+// console.log(ans)
+
+// DFS:
+// const ans = tree.DFSInorder([tree.root], []);
+// const ans = tree.DFSPreorder([tree.root], []);
+// const ans = tree.DFSPostorder([tree.root], []);
+// console.log(ans)
+
 //     9
 //  4     20
 //1  6  15  170

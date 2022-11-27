@@ -1,0 +1,72 @@
+Searching
+	Linear Search - loop throught array O(n)
+	Binary Search 
+		need a sorted list
+		recursion,
+		O(log(N))
+
+	Traversal - visiting every node (历遍)
+		always O(N)
+		both trees & graphs
+		BFS & DFS
+
+	BFS:
+		additional memory for tracking all the child nodes for a given level
+		Pros:
+			Shortest Path
+			Closer Nodes
+		Cons:
+			More Memory
+
+		Choose:
+			when you know the Node is more likely to appear at the uppler levels of the tree/ graph
+
+	DFS:
+		less memory consumption
+		Pros:
+			Less Memory
+			Does Path Exist?
+			maze-like problem
+		Cons:
+			Can get slow
+
+		preorder/ inorder/ preorder:
+				9
+			4      20
+		  1   6  15   170	
+		inorder: [1,4,6,9,15,20,170] - smaller to lagger
+		preorder: [9,4,1,6,20,15,170] - starting from parent node (useful to re-create a tree)
+		postorder: [1,6,4,15,170,20,9] - starting from lowest left child then right child then parent 
+
+		where in, pre, post are the position of the Node:
+			in:   Left->Node->Right (bottom - up)
+			pre:  Node->Left->Right (up - bottom)
+			post: Left->Right->Node (bottom - up)
+
+
+	Interview Questions:
+		If you know a solution is not far from the root of the tree:
+			BFS, starts searching the nodes closer to the root
+
+		If the tree is very deep and solutions are rare: 
+			BFS (DFS will take long time, but also depends on the tree structure, BFS can take up more memory)
+
+		If the tree is very wide:
+			DFS BFS will need too much memory
+
+		If solutions are frequent but located deep in the tree:
+			DFS
+
+		Determining whether a path exists between two nodes:
+			DFS
+
+		Finding the shortest path:
+			BFS
+
+	Shortese Path: (on WEIGHTED graphs)
+		Dijkstra:
+
+
+		Bellman-Ford:
+			take care of negative weights
+			Long-time to run (O(n^2))
