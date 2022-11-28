@@ -1,0 +1,35 @@
+Dynamic Programming
+	It is an optimization technique
+	Cache sth to optimize
+
+	Memoization - Caching
+		depends on the input parameter
+		don't need to calculate again if input is the same
+
+		in js, use closure: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+			example:
+				function makeAdder(x) {
+				  return function (y) {
+				    return x + y;
+				  };
+				}
+
+				const add5 = makeAdder(5);
+				const add10 = makeAdder(10);
+
+				console.log(add5(2)); // 7
+				console.log(add10(2)); // 12
+
+			here inner function can get access to makeAdder function's local variable
+
+	When to use Dynamic Programming:
+		
+		Divide & Conquer + memoization
+
+		1. can be divided into subproblem
+		2. Recursive Solution
+		3. Repetitive subproblems
+		4. Memoize subproblems
+
+	Bottom up approach:
+		another way og memoization

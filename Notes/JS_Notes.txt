@@ -1,0 +1,18 @@
+var, let and const
+	https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/
+
+	var 
+		can be global & local, some confusion shoen on link 
+		initialized as undefined
+
+	let:
+		limited to block (inside {})
+		can be updated but not re-declared (in the same scope)
+		not initialized
+
+	const:
+		limited to block (inside {})
+		cannot be updated nor re-declared
+		if const is pointing to an object:
+			the object's state can be updated
+			cannot reassign object to the const variable
