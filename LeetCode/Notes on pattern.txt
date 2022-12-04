@@ -1,0 +1,22 @@
+1. Sliding window:
+	The problem input is a linear data structure such as a linked list, array, or string
+	You’re asked to find the longest/shortest substring, subarray, or a desired value
+
+2. Two Pointers:
+	It will feature problems where you deal with sorted arrays (or Linked Lists) and need to find a set of elements that fulfill certain constraints
+	The set of elements in the array is a pair, a triplet, or even a subarray
+
+3. Fast and Slow pointers:
+	This approach is quite useful when dealing with cyclic linked lists or arrays.
+
+	How do you identify when to use the Fast and Slow pattern?
+		The problem will deal with a loop in a linked list or array
+		When you need to know the position of a certain element or the overall length of the linked list.
+
+	An example of when to use the Fast and Slow pattern is when you’re trying to determine if a linked list is a palindrome.
+
+4. Merge Intervals
+	How do you identify when to use the Merge Intervals pattern?
+		If you’re asked to produce a list with only mutually exclusive intervals
+		If you hear the term “overlapping intervals”.
+		Merge interval problem patterns:
